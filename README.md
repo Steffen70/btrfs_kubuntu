@@ -1,13 +1,55 @@
 ## Install Kununtu on BTRFS with multiple drives
 
-Install Kubuntu via installer and select BTRFS.
+### Create EFI partition
 
-### Add the other drives
+[Youtube Tutorial](https://www.youtube.com/watch?v=_sLSiL3oynk)
 
 ```bash
 # Identify the drives
 lsblk
 
+# Create the EFI partition
+gdisk /dev/sdb
+
+# Create a new partition
+n
+
+# Set the first sector to the default (press enter)
+# Set the patition size to 512MB
++512M
+
+# Set the partition type to EFI
+ef00
+
+# Create the swap partition
+n
+
+# Set the first sector to the default
+# Set the partition size to your ram size
++32G
+
+# Set the partition type to swap
+8200
+
+# Create the root partition
+n
+
+# Set the first sector to the default
+# Set the partition size to the default
+# Set the partition type to Linux filesystem
+8300
+
+# Write the changes
+w
+```
+
+### Alter the ubiquity installer
+
+TODO
+
+### Add the other drives
+
+```bash
 # Wipe the drives
 sudo wipefs -a /dev/sdc
 sudo wipefs -a /dev/sdd
