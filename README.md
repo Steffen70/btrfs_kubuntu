@@ -19,7 +19,7 @@ sudo btrfs device add /dev/sdc /dev/sdd /
 sudo btrfs filesystem show
 
 # Balance the data
-sudo btrfs balance start -dconvert=raid0 -mconvert=raid1 /
+sudo btrfs balance start -dconvert=raid0 -mconvert=raid0 /
 
 # Check the status
 sudo btrfs filesystem show /
