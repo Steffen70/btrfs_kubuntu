@@ -183,6 +183,8 @@ update-grub
 ### Add the other drives
 
 ```bash
+lsblk
+
 # Wipe the drives
 sudo wipefs -a /dev/sdc
 sudo wipefs -a /dev/sdd
@@ -194,7 +196,7 @@ sudo btrfs device add /dev/sdc /dev/sdd /
 sudo btrfs filesystem show
 
 # Balance the data
-sudo btrfs balance start -dconvert=raid0 -mconvert=raid0 /
+sudo btrfs balance start -dconvert=raid0 -mconvert=raid0 / --force
 
 # Check the status
 sudo btrfs filesystem show /
